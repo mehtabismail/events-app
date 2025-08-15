@@ -92,6 +92,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+            }
+        }
     }
     buildTypes {
         debug {
@@ -100,7 +108,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -115,5 +123,38 @@ dependencies {
         implementation("com.facebook.react:hermes-android")
     } else {
         implementation jscFlavor
+    }
+}
+
+def generateDebugIcons() {
+    def iconSizes = [
+        "mipmap-mdpi"  : 48,
+        "mipmap-hdpi"  : 72,
+        "mipmap-xhdpi" : 96,
+        "mipmap-xxhdpi": 144,
+        "mipmap-xxxhdpi": 192
+    ]
+    def debugResDir = file("$projectDir/src/debug/res")
+
+    iconSizes.each { folder, size ->
+        def dir = new File(debugResDir, folder)
+        if (!dir.exists()) {
+            dir.mkdirs()
+        }
+        def iconFile = new File(dir, "ic_launcher.png")
+        println "🛠 Generating debug icon: ${iconFile} (${size}x${size})"
+        // Requires ImageMagick installed
+        exec {
+            commandLine "convert", "$projectDir/debug_icon.png", "-resize", "${size}x${size}", iconFile.absolutePath
+        }
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == "preDebugBuild") {
+        task.doFirst {
+            println "⚡ Auto-generating debug icons..."
+            generateDebugIcons()
+        }
     }
 }

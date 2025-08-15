@@ -6,10 +6,12 @@
  */
 
 import { NewAppScreen } from '@react-native/new-app-screen';
+import { useEffect } from 'react';
 import {
   StatusBar,
   StyleSheet,
   Text,
+  TextInput,
   useColorScheme,
   View,
 } from 'react-native';
@@ -17,6 +19,9 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import Application from '@/navigators/Application';
+import { store } from '@/store/store';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -32,7 +37,14 @@ function App() {
 function AppContent() {
   const safeAreaInsets = useSafeAreaInsets();
 
-  console.log(safeAreaInsets, 'her is insets');
+  useEffect(() => {
+    Text.defaultProps = Text.defaultProps || {};
+    Text.defaultProps.allowFontScaling = false;
+    TextInput.defaultProps = TextInput.defaultProps || {};
+    TextInput.defaultProps.allowFontScaling = false;
+    View.defaultProps = View.defaultProps || {};
+    View.defaultProps.allowFontScaling = false;
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -43,7 +55,10 @@ function AppContent() {
           paddingRight: safeAreaInsets.right,
         }}
       >
-        <Text>Hello</Text>
+        <Provider store={store}>
+          <Application />
+          {/* <Toast ref={ref => (global.toast = ref)} /> */}
+        </Provider>
       </View>
     </View>
   );

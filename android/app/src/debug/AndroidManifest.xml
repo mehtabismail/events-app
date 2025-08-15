@@ -5,5 +5,8 @@
     <application
         android:usesCleartextTraffic="true"
         tools:targetApi="28"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        tools:replace="android:roundIcon,android:icon"
         tools:ignore="GoogleAppIndexingWarning"/>
 </manifest>
