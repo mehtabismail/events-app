@@ -125,36 +125,3 @@ dependencies {
         implementation jscFlavor
     }
 }
-
-def generateDebugIcons() {
-    def iconSizes = [
-        "mipmap-mdpi"  : 48,
-        "mipmap-hdpi"  : 72,
-        "mipmap-xhdpi" : 96,
-        "mipmap-xxhdpi": 144,
-        "mipmap-xxxhdpi": 192
-    ]
-    def debugResDir = file("$projectDir/src/debug/res")
-
-    iconSizes.each { folder, size ->
-        def dir = new File(debugResDir, folder)
-        if (!dir.exists()) {
-            dir.mkdirs()
-        }
-        def iconFile = new File(dir, "ic_launcher.png")
-        println "🛠 Generating debug icon: ${iconFile} (${size}x${size})"
-        // Requires ImageMagick installed
-        exec {
-            commandLine "convert", "$projectDir/debug_icon.png", "-resize", "${size}x${size}", iconFile.absolutePath
-        }
-    }
-}
-
-tasks.whenTaskAdded { task ->
-    if (task.name == "preDebugBuild") {
-        task.doFirst {
-            println "⚡ Auto-generating debug icons..."
-            generateDebugIcons()
-        }
-    }
-}

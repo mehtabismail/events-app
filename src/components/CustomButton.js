@@ -1,9 +1,10 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
-import {useTheme} from '@/hooks';
+import { useTheme } from '@/hooks';
+import { mS } from '@/utils/functions';
 
-const CustomButton = ({onPress, btnText, customStyle}) => {
-  const {Layout, Colors, Gutters, Fonts} = useTheme();
+const CustomButton = ({ onPress, btnText, customStyle }) => {
+  const { Layout, Colors, Gutters, Fonts } = useTheme();
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -11,16 +12,22 @@ const CustomButton = ({onPress, btnText, customStyle}) => {
       style={[
         Layout.fullWidth,
         Layout.center,
-        Gutters.darkShadow,
-        {height: 48, backgroundColor: Colors.primary, borderRadius: 48 / 2},
-      ]}>
+        Gutters.gapVMargin,
+        // Gutters.darkShadow,
+        {
+          height: mS(48),
+          borderRadius: mS(24),
+          backgroundColor: Colors.primary,
+        },
+      ]}
+    >
       <Text
         style={[
-          Fonts.nunito16,
-          Fonts.mediumWeight,
-          {color: Colors.white},
+          Fonts.PLUSJAKARTASANS_BOLD_16,
+          { color: Colors.white },
           customStyle,
-        ]}>
+        ]}
+      >
         {btnText}
       </Text>
     </TouchableOpacity>

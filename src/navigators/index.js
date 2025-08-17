@@ -3,3 +3,7 @@ export { default as TabNavigator } from './TabNavigator';
 export { default as HomeNavigator } from './HomeNavigator';
 export { default as ProfileNavigator } from './ProfileNavigator';
 export { default as ChatNavigator } from './ChatNavigator';
+export { default as PaymentNavigator } from './PaymentNavigator';
+export { default as CreateNavigator } from './CreateNavigator';
+export { default as ActivityNavigator } from './ActivityNavigator';
+export { default as NotificationsNavigator } from './NotificationsNavigator';

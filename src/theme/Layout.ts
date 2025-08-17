@@ -1,6 +1,7 @@
-import {StyleSheet} from 'react-native';
-import {ThemeVariables} from './theme';
-import {Colors} from './Variables';
+import { StyleSheet } from 'react-native';
+import { ThemeVariables } from './theme';
+import { Colors } from './Variables';
+import { mS } from '@/utils/functions';
 
 export default function ({}: ThemeVariables) {
   return StyleSheet.create({
@@ -142,7 +143,7 @@ export default function ({}: ThemeVariables) {
     flexWrap: {
       flexWrap: 'wrap',
     },
-    ['width45']: {width: '45%'},
+    ['width45']: { width: '45%' },
     fullSize: {
       height: '100%',
       width: '100%',
@@ -203,9 +204,8 @@ export default function ({}: ThemeVariables) {
       backgroundColor: Colors.background,
     },
     screen: {
-      width: '94%',
+      paddingHorizontal: mS(15),
       backgroundColor: Colors.background,
-      alignSelf: 'center',
       flex: 1,
     },
     defaultScreen: {
@@ -215,16 +215,16 @@ export default function ({}: ThemeVariables) {
     },
     /* Operation Layout */
     mirror: {
-      transform: [{scaleX: -1}],
+      transform: [{ scaleX: -1 }],
     },
     rotate90: {
-      transform: [{rotate: '90deg'}],
+      transform: [{ rotate: '90deg' }],
     },
     rotate90Inverse: {
-      transform: [{rotate: '-90deg'}],
+      transform: [{ rotate: '-90deg' }],
     },
-    invertedY: {transform: [{scaleY: -1}]},
-    invertedX: {transform: [{scaleX: -1}]},
+    invertedY: { transform: [{ scaleY: -1 }] },
+    invertedX: { transform: [{ scaleX: -1 }] },
 
     // Position
     relative: {

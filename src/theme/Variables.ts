@@ -16,6 +16,7 @@ export const Colors = {
   secondary: '#4F8794',
   secondary_4D8C99: '#4D8C99',
   secondary_background: '#E8F2F2',
+  textinput_background: '#E8F0F2',
   tertiary: '#0D171C',
   text: '#0D171C',
   white: '#ffffff',
@@ -50,6 +51,7 @@ export const FontSize = {
  */
 const little = 5;
 const tiny = 10;
+const gap = 12;
 const xTiny = 15;
 const small = tiny * 2; // 20
 const medium = 25;
@@ -62,6 +64,7 @@ const xLarge = xRegular * 2; // 60
 export const MetricsSizes = {
   little,
   tiny,
+  gap,
   xTiny,
   small,
   medium,

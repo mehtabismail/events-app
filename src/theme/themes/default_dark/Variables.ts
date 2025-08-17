@@ -1,12 +1,23 @@
-import {ThemeNavigationColors} from '../../../../@types/theme';
+import { ThemeNavigationColors } from '../../../../@types/theme';
 
 export const Colors = {
-  primary: '#09C47A',
-  textGray800: '#E0E0E0',
-  textGray400: '#969696',
-  textGray200: '#BABABA',
-  inputBackground: '#3a3a3a',
-  circleButtonBackground: '#252732',
+  transparent: 'rgba(0,0,0,0)',
+  primary: '#1A99BD',
+  secondary: '#4F8794',
+  secondary_4D8C99: '#4D8C99',
+  secondary_background: '#E8F2F2',
+  textinput_background: '#E8F0F2',
+  tertiary: '#0D171C',
+  text: '#0D171C',
+  white: '#ffffff',
+  white_text: '#F7FAFA',
+  background: '#F7FAFC',
+  black: '#000000',
+  blur: '#00000090',
+  accent: '#EF4444',
+  error: '#dc3545',
+  red: '#EE1111',
+  yellow: 'yellow',
 };
 
 export const NavigationColors: Partial<ThemeNavigationColors> = {

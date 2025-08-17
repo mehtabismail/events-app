@@ -1,21 +1,18 @@
+import { CreateEventContainer } from '@/screens';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useTheme } from '@/hooks';
-import { ProfileContainer } from '@/screens';
 
 const Stack = createNativeStackNavigator();
 
-function ProfileNavigator() {
-  const { navigationTheme } = useTheme();
-
+function CreateNavigator({ navigation, route }) {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
-        name="ProfileContainer"
-        component={ProfileContainer}
+        name="CreateEventContainer"
+        component={CreateEventContainer}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
 }
 
-export default ProfileNavigator;
+export default CreateNavigator;

@@ -1,12 +1,12 @@
-import {View, Text, TextInput} from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import React from 'react';
-import {useTheme} from '@/hooks';
+import { useTheme } from '@/hooks';
 
 const CustomTextInput = props => {
-  const {Layout, Gutters, Colors, Fonts} = useTheme();
-
+  const { Layout, Gutters, Colors, Fonts, Images } = useTheme();
+  const RIcon = props?.rightIcon ? Images.svg[props?.rightIcon].default : null;
   return (
-    <View style={[Gutters.xTinyTMargin]}>
+    <View style={[Gutters.gapVPadding]}>
       {props?.headingText && (
         <View style={[Gutters.tinyBMargin]}>
           <Text
@@ -14,30 +14,43 @@ const CustomTextInput = props => {
               Fonts.regularWeight,
               Fonts.nunito14,
               props.customHeadingTextStyle,
-            ]}>
+            ]}
+          >
             {props?.headingText}
           </Text>
         </View>
       )}
-      <View>
+      <View style={[Layout.row]}>
         <TextInput
           {...props}
           placeholderTextColor={
             props?.placeholderTextColor
               ? props.placeholderTextColor
-              : Colors.text
+              : Colors.secondary
           }
           onChangeText={value => {
             props?.handleChangeInput(value, props?.fieldName);
           }}
           style={[
-            Gutters.mediumHPadding,
+            Gutters.xTinyHPadding,
             Gutters.input,
-            Gutters.extraLightShadow,
-            {borderWidth: 1, borderColor: Colors.border1},
+            Fonts.PLUSJAKARTASANS_REGULAR_16,
+            // Gutters.extraLightShadow,
             props.customStyle,
           ]}
         />
+        {props?.rightIcon && (
+          <View
+            style={[
+              {
+                right: 40,
+                justifyContent: 'center',
+              },
+            ]}
+          >
+            <RIcon width={25} height={35} />
+          </View>
+        )}
       </View>
     </View>
   );

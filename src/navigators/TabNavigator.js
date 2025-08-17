@@ -1,191 +1,146 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Platform, StyleSheet, Text } from 'react-native';
 import { useTheme } from '@/hooks';
 import {
-  ChatNavigator,
-  GoLiveNavigator,
+  ActivityNavigator,
+  CreateNavigator,
   HomeNavigator,
+  NotificationsNavigator,
   ProfileNavigator,
-  VideoNavigator,
 } from '.';
-import { Colors } from '@/theme/Variables';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import { mS } from '@/utils/functions';
+import { NotificationContainer } from '@/screens';
 
 const Tab = createBottomTabNavigator();
 
 export const TabNavigator = () => {
-  const { Colors, Layout, Gutters, Images, Fonts } = useTheme();
+  const { Colors, Images, Fonts } = useTheme();
+  const { role } = useSelector(state => state.auth);
 
   return (
     <Tab.Navigator
-      initialRouteName={'Home'}
-      screenOptions={({ route, focused }) => ({
-        tabBarShowLabel: false,
+      initialRouteName={role === 'user' ? 'Home' : 'My Events'}
+      screenOptions={{
+        tabBarShowLabel: true,
         headerShown: false,
-        unmountOnBlur: true,
-        tabBarStyle: (route => {
-          const routeName = getFocusedRouteNameFromRoute(route) ?? '';
-
-          return {
-            display: ['EditProfileContainer'].includes(routeName)
-              ? 'none'
-              : 'flex',
-            height: 80,
-            paddingHorizontal: 10,
-            paddingTop: 0,
-            backgroundColor: Colors.background,
-            borderTopWidth: 0,
-            ...Gutters.darkShadow,
-          };
-        })(route),
-      })}
+        tabBarActiveTintColor: Colors.text,
+        tabBarInactiveTintColor: Colors.secondary,
+        tabBarStyle: {
+          height: mS(75),
+          backgroundColor: Colors.background,
+          borderTopWidth: 0.5,
+          borderTopColor: Colors.border,
+        },
+        tabBarLabelStyle: ({ focused }) => ({
+          marginBottom: mS(6),
+          color: focused ? Colors.text : Colors.secondary,
+          ...Fonts.PLUSJAKARTASANS_MEDIUM_12,
+        }),
+        tabBarIconStyle: {
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: mS(8),
+        },
+        tabBarItemStyle: {
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+      }}
     >
       <Tab.Screen
-        name="Home"
+        name={role === 'user' ? 'Home' : 'My Events'}
         component={HomeNavigator}
-        options={({ route, focused }) => ({
-          tabBarIcon: ({ focused }) => {
-            return (
-              <View style={[styles.tabBarStyle]}>
-                <View
-                  style={[
-                    Layout.center,
-                    Gutters.xTinyHPadding,
-                    Gutters.tinyVPadding,
-                    Gutters.xTinyRadius,
-                    {
-                      backgroundColor: focused
-                        ? Colors.primary
-                        : Colors.transparent,
-                    },
-                  ]}
-                >
-                  {focused ? (
-                    <Images.svg.HomeTabFilled.default />
-                  ) : (
-                    <Images.svg.HomeTab.default />
-                  )}
-                  {!!focused && (
-                    <Text
-                      style={[
-                        Fonts.nunito14,
-                        {
-                          color: focused ? Colors.white : Colors.text_5A6F82,
-                          fontWeight: focused ? '600' : '400',
-                        },
-                      ]}
-                    >
-                      Live
-                    </Text>
-                  )}
-                </View>
-              </View>
-            );
-          },
-        })}
+        options={{
+          tabBarIcon: ({ focused }) =>
+            role === 'user' ? (
+              <Images.svg.HomeTab.default
+                width={mS(24)}
+                height={mS(32)}
+                fill={focused ? Colors.text : Colors.secondary}
+              />
+            ) : (
+              <Images.svg.CalenderTab.default
+                width={mS(24)}
+                height={mS(32)}
+                fill={focused ? Colors.text : Colors.secondary}
+              />
+            ),
+          tabBarLabel: role === 'user' ? 'Home' : 'My Events',
+        }}
       />
       <Tab.Screen
-        name="Chat"
-        component={ChatNavigator}
+        name={role === 'user' ? 'Activity' : 'Create'}
+        component={role === 'user' ? ActivityNavigator : CreateNavigator}
         options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <View style={[styles.tabBarStyle]}>
-                <View
-                  style={[
-                    Layout.center,
-                    Gutters.xTinyHPadding,
-                    Gutters.tinyVPadding,
-                    Gutters.xTinyRadius,
-                    {
-                      backgroundColor: focused
-                        ? Colors.primary
-                        : Colors.transparent,
-                    },
-                  ]}
-                >
-                  {focused ? (
-                    <Images.svg.ChatTabFilled.default />
-                  ) : (
-                    <Images.svg.ChatTab.default />
-                  )}
-                  {focused && (
-                    <Text
-                      style={[
-                        Fonts.nunito14,
-                        {
-                          color: focused ? Colors.white : Colors.text_5A6F82,
-                          fontWeight: focused ? '600' : '400',
-                        },
-                      ]}
-                    >
-                      Chat
-                    </Text>
-                  )}
-                </View>
-              </View>
-            );
-          },
+          tabBarIcon: ({ focused }) =>
+            role === 'user' ? (
+              <Images.svg.ActivityTab.default
+                width={mS(24)}
+                height={mS(32)}
+                fill={focused ? Colors.text : Colors.secondary}
+              />
+            ) : (
+              <Images.svg.CreateTab.default
+                width={mS(24)}
+                height={mS(32)}
+                fill={focused ? Colors.text : Colors.secondary}
+              />
+            ),
+          tabBarLabel: role === 'user' ? 'Activity' : 'Create',
+        }}
+      />
+      <Tab.Screen
+        name={role === 'user' ? 'Events' : 'Payments'}
+        component={role === 'user' ? ActivityNavigator : CreateNavigator}
+        options={{
+          tabBarIcon: ({ focused }) =>
+            role === 'user' ? (
+              <Images.svg.CalenderTab.default
+                width={mS(24)}
+                height={mS(32)}
+                fill={focused ? Colors.text : Colors.secondary}
+              />
+            ) : (
+              <Images.svg.PaymentTab.default
+                width={mS(24)}
+                height={mS(32)}
+                fill={focused ? Colors.text : Colors.secondary}
+              />
+            ),
+          tabBarLabel: role === 'user' ? 'Events' : 'Payments',
+        }}
+      />
+      <Tab.Screen
+        name="Notifications"
+        component={NotificationsNavigator}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Images.svg.NotificationTab.default
+              width={mS(24)}
+              height={mS(32)}
+              fill={focused ? Colors.text : Colors.secondary}
+            />
+          ),
+          tabBarLabel: 'Notifications',
         }}
       />
       <Tab.Screen
         name="Profile"
         component={ProfileNavigator}
-        options={({ route, focused }) => ({
-          tabBarIcon: ({ focused }) => {
-            return (
-              <View style={[styles.tabBarStyle]}>
-                <View
-                  style={[
-                    Layout.center,
-                    Gutters.xTinyHPadding,
-                    Gutters.tinyVPadding,
-                    Gutters.xTinyRadius,
-                    {
-                      backgroundColor: focused
-                        ? Colors.primary
-                        : Colors.transparent,
-                    },
-                  ]}
-                >
-                  {focused ? (
-                    <Images.svg.ProfileTabFilled.default />
-                  ) : (
-                    <Images.svg.ProfileTab.default />
-                  )}
-                  {focused && (
-                    <Text
-                      style={[
-                        Fonts.nunito14,
-                        {
-                          color: focused ? Colors.white : Colors.text_5A6F82,
-                          fontWeight: focused ? '600' : '400',
-                        },
-                      ]}
-                    >
-                      Profile
-                    </Text>
-                  )}
-                </View>
-              </View>
-            );
-          },
-        })}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Images.svg.ProfileTab.default
+              width={mS(24)}
+              height={mS(32)}
+              fill={focused ? Colors.text : Colors.secondary}
+            />
+          ),
+          tabBarLabel: 'Profile',
+        }}
       />
     </Tab.Navigator>
   );
 };
 
 export default TabNavigator;
-
-const styles = StyleSheet.create({
-  tabBarStyle: {
-    marginTop: Platform.OS === 'ios' ? 20 : 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-    width: '100%',
-    backgroundColor: Colors.background,
-  },
-});

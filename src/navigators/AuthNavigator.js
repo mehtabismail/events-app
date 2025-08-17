@@ -20,7 +20,7 @@ const Auth = () => {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="SplashContainer"
+      initialRouteName="LoginContainer"
     >
       <Stack.Screen name="SplashContainer" component={SplashContainer} />
 

@@ -1,21 +1,18 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useTheme } from '@/hooks';
-import { ProfileContainer } from '@/screens';
+import { PaymentContainer } from '../screens';
 
 const Stack = createNativeStackNavigator();
 
-function ProfileNavigator() {
-  const { navigationTheme } = useTheme();
-
+function PaymentNavigator({ navigation, route }) {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
-        name="ProfileContainer"
-        component={ProfileContainer}
+        name="PaymentsContainer"
+        component={PaymentContainer}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
 }
 
-export default ProfileNavigator;
+export default PaymentNavigator;

@@ -1,8 +1,9 @@
-import {StyleSheet} from 'react-native';
-import {Gutters, ThemeVariables} from '../../@types/theme';
-import {NativeModules} from 'react-native';
-import {Colors} from './Variables';
-const {StatusBarManager} = NativeModules;
+import { StyleSheet } from 'react-native';
+import { Gutters, ThemeVariables } from '../../@types/theme';
+import { NativeModules } from 'react-native';
+import { Colors } from './Variables';
+import { mS } from '@/utils/functions';
+const { StatusBarManager } = NativeModules;
 
 export const StatusBarheight = StatusBarManager.HEIGHT;
 
@@ -18,7 +19,7 @@ export const StatusBarheight = StatusBarManager.HEIGHT;
  * <op>: can be ['Margin', 'Padding']
  * <value>: is the value of the <size>
  */
-export default function ({MetricsSizes}: ThemeVariables): Gutters {
+export default function ({ MetricsSizes }: ThemeVariables): Gutters {
   return StyleSheet.create(
     Object.entries(MetricsSizes).reduce(
       (acc, [key, value]) => ({
@@ -101,13 +102,16 @@ export default function ({MetricsSizes}: ThemeVariables): Gutters {
           paddingTop: StatusBarheight,
         } as any,
         input: {
-          backgroundColor: Colors.background,
-          borderRadius: 48 / 2,
-          height: 48,
+          backgroundColor: Colors.textinput_background,
+          borderRadius: mS(12),
+          height: mS(56),
           width: '100%',
-          color: Colors.text,
+          color: Colors.secondary,
         },
-        notificationCard: {width: 32, height: 29},
+        header: {
+          flexDirection: 'row',
+        },
+        notificationCard: { width: 32, height: 29 },
         lightShadow: {
           shadowColor: '#000',
           shadowOffset: {

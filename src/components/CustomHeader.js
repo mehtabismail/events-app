@@ -2,6 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { useTheme } from '@/hooks';
 import { useNavigation } from '@react-navigation/native';
+import { mS } from '@/utils/functions';
 const CustomHeader = ({
   rightIcon,
   leftIcon,
@@ -31,16 +32,14 @@ const CustomHeader = ({
         Layout.row,
         Layout.justifyContentBetween,
         Layout.alignItemsCenter,
-        Gutters.statusBarHeight,
-        Gutters.tinyVPadding,
-        { backgroundColor: Colors.primary, paddingHorizontal: '3%' },
+        { height: mS(70) },
         customStyles,
       ]}
     >
-      <View style={[Layout.justifyContentStart, Layout.row, { width: '30%' }]}>
+      <View style={[Layout.justifyContentStart, Layout.row, { width: '20%' }]}>
         {backButton ? (
           <TouchableOpacity
-            style={[Gutters.littleVPadding]}
+            style={[Gutters.tinyVPadding, Gutters.tinyHPadding]}
             onPress={() => {
               !!onBackPress ? onBackPress() : navigation.goBack();
             }}
@@ -72,41 +71,19 @@ const CustomHeader = ({
           </>
         )}
       </View>
-      <View style={[Layout.justifyContentCenter, Layout.row, { width: '40%' }]}>
+      <View style={[Layout.justifyContentCenter, Layout.row, { width: '60%' }]}>
         {centerIcon ? (
           <CIcon />
         ) : (
           centerText && (
-            <Text
-              style={[
-                Fonts.nunito18,
-                Fonts.semiboldWeight,
-                { color: Colors.white, textAlign: 'center' },
-              ]}
-            >
-              {centerText}
-            </Text>
+            <Text style={[Fonts.PLUSJAKARTASANS_BOLD_18]}>{centerText}</Text>
           )
         )}
       </View>
-      {rightIcon || RightIconComponnet ? (
-        <View style={[Layout.justifyContentEnd, Layout.row, { width: '30%' }]}>
-          {RightIconComponnet ? (
-            RightIconComponnet()
-          ) : (
-            <TouchableOpacity
-              onPress={() => onPressRight && onPressRight()}
-              style={[rightInvertedX && Layout.invertedX]}
-            >
-              <RIcon />
-            </TouchableOpacity>
-          )}
-        </View>
-      ) : (
-        <View
-          style={[Layout.justifyContentEnd, Layout.row, { width: '30%' }]}
-        ></View>
-      )}
+
+      <View
+        style={[Layout.justifyContentEnd, Layout.row, { width: '20%' }]}
+      ></View>
     </View>
   );
 };

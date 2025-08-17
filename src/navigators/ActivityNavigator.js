@@ -1,21 +1,21 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTheme } from '@/hooks';
-import { ProfileContainer } from '@/screens';
+import { ActivityContainer } from '../screens';
 
 const Stack = createNativeStackNavigator();
 
-function ProfileNavigator() {
+function ChatNavigator() {
   const { navigationTheme } = useTheme();
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
-        name="ProfileContainer"
-        component={ProfileContainer}
+        name="ActivityContainer"
+        component={ActivityContainer}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
 }
 
-export default ProfileNavigator;
+export default ChatNavigator;

@@ -128,4 +128,39 @@ export const notification_data = [
     date: new Date(d.setDate(d.getDate() - 1)),
     last: true,
   },
+  {
+    title: 'New Booking',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
+    date: new Date(),
+  },
+  {
+    title: 'New Message',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
+    date: new Date(),
+  },
+  {
+    title: 'Appointment Coming',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
+    date: new Date(),
+  },
+  {
+    title: 'New Booking',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
+    date: new Date(d.setDate(d.getDate() - 1)),
+  },
+  {
+    title: 'New Message',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
+    date: new Date(d.setDate(d.getDate() - 1)),
+  },
+  {
+    title: 'Appointment Coming',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
+    date: new Date(d.setDate(d.getDate() - 1)),
+  },
+  {
+    title: 'New Booking',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
+    date: new Date(d.setDate(d.getDate() - 1)),
+  },
 ];
