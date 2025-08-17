@@ -6,6 +6,7 @@ import {
   CreateNavigator,
   HomeNavigator,
   NotificationsNavigator,
+  PaymentNavigator,
   ProfileNavigator,
 } from '.';
 import { useSelector } from 'react-redux';
@@ -92,7 +93,7 @@ export const TabNavigator = () => {
       />
       <Tab.Screen
         name={role === 'user' ? 'Events' : 'Payments'}
-        component={role === 'user' ? ActivityNavigator : CreateNavigator}
+        component={role === 'user' ? ActivityNavigator : PaymentNavigator}
         options={{
           tabBarIcon: ({ focused }) =>
             role === 'user' ? (

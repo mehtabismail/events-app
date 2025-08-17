@@ -114,16 +114,24 @@ import { navigationRef } from '@/navigators/utils';
 const LoginContainer = () => {
   const { Layout, Gutters, Fonts, Images, Colors } = useTheme();
   const [role, setRole] = useState('');
+  const [username, setUsername] = useState('user');
 
   const dispatch = useDispatch();
 
   const handleChangeInput = props => {
-    console.log(props);
+    setUsername(props);
   };
 
   const loginPressHandler = () => {
+    // if (username == 'user') {
+    //   dispatch(storeToken('123'));
+    //   dispatch(setingRole('user'));
+    // } else {
+    //   dispatch(storeToken('123'));
+    //   dispatch(setingRole('event-planner'));
+    // }
     dispatch(storeToken('123'));
-    dispatch(setingRole('user'));
+    dispatch(setingRole('event-planner'));
   };
 
   const LoginContent = () => {
@@ -142,6 +150,7 @@ const LoginContainer = () => {
         <View>
           <CustomTextInput
             placeholder="Username or Email"
+            // value={username}
             // headingText="Email"
             handleChangeInput={handleChangeInput}
           />

@@ -164,3 +164,10 @@ export const notification_data = [
     date: new Date(d.setDate(d.getDate() - 1)),
   },
 ];
+
+export const manage_events_list = [
+  'Live',
+  'Drafts',
+  'Under Review',
+  'Rejected',
+];

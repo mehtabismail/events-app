@@ -4,8 +4,10 @@ import { CustomButton, ScreenWrapper } from '@/components';
 import { logout } from '@/store/auth/AuthSlice';
 import { persistor } from '@/store/store';
 import { useDispatch } from 'react-redux';
+import { useTheme } from '@/hooks';
 
 const HomeContainer = () => {
+  const { Layout } = useTheme();
   const dispatch = useDispatch();
   return (
     <ScreenWrapper>

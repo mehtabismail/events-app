@@ -15,6 +15,7 @@ export default function ({}: ThemeVariables) {
       Catalogue: require('./assets/svg/catalogue_tab.svg'),
       Logout: require('./assets/svg/logout.svg'),
       Chat: require('./assets/svg/chat.svg'),
+      Plus: require('./assets/svg/Plus.svg'),
       Notification: require('./assets/svg/notification.svg'),
       NotificationTab: require('./assets/svg/Notifications.svg'),
       ArrowRight: require('./assets/svg/arrow_right.svg'),

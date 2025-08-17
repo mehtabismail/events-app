@@ -8,7 +8,7 @@ import {
 } from '@/components';
 import { useTheme } from '@/hooks';
 import { useDispatch } from 'react-redux';
-import { storeToken } from '@/store/auth/AuthSlice';
+import { setingRole, storeToken } from '@/store/auth/AuthSlice';
 import { mS } from '@/utils/functions';
 
 const EventPlannerSignUp = ({ navigation }) => {
@@ -21,6 +21,7 @@ const EventPlannerSignUp = ({ navigation }) => {
   };
 
   const loginPressHandler = () => {
+    dispatch(setingRole('event-planner'));
     dispatch(storeToken('123'));
   };
   return (

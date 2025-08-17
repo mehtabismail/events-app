@@ -8,7 +8,7 @@ import {
 } from '@/components';
 import { useTheme } from '@/hooks';
 import { useDispatch } from 'react-redux';
-import { storeToken } from '@/store/auth/AuthSlice';
+import { setingRole, storeToken } from '@/store/auth/AuthSlice';
 
 const UserSignUp = ({ navigation }) => {
   const { Layout, Images, Colors, Fonts, Gutters } = useTheme();
@@ -20,6 +20,7 @@ const UserSignUp = ({ navigation }) => {
   };
 
   const loginPressHandler = () => {
+    dispatch(setingRole('user'));
     dispatch(storeToken('123'));
   };
   return (
