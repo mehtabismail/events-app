@@ -5,6 +5,7 @@ import { useTheme } from '@/hooks';
 const CustomTextInput = props => {
   const { Layout, Gutters, Colors, Fonts, Images } = useTheme();
   const RIcon = props?.rightIcon ? Images.svg[props?.rightIcon].default : null;
+  const LIcon = props?.leftIcon ? Images.svg[props?.leftIcon].default : null;
   return (
     <View style={[Gutters.gapVPadding]}>
       {props?.headingText && (
@@ -20,7 +21,19 @@ const CustomTextInput = props => {
           </Text>
         </View>
       )}
-      <View style={[Layout.row]}>
+      <View style={[Layout.row, Gutters.input]}>
+        {props?.leftIcon && (
+          <View
+            style={[
+              Gutters.tinyLMargin,
+              {
+                justifyContent: 'center',
+              },
+            ]}
+          >
+            <LIcon width={25} height={25} />
+          </View>
+        )}
         <TextInput
           {...props}
           placeholderTextColor={
@@ -32,8 +45,7 @@ const CustomTextInput = props => {
             props?.handleChangeInput(value, props?.fieldName);
           }}
           style={[
-            Gutters.xTinyHPadding,
-            Gutters.input,
+            Gutters.tinyHPadding,
             Fonts.PLUSJAKARTASANS_REGULAR_16,
             // Gutters.extraLightShadow,
             props.customStyle,

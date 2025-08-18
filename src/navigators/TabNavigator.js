@@ -54,7 +54,7 @@ export const TabNavigator = () => {
         component={HomeNavigator}
         options={{
           tabBarIcon: ({ focused }) =>
-            role === 'user' ? (
+            role !== 'user' ? (
               <Images.svg.HomeTab.default
                 width={mS(24)}
                 height={mS(32)}
@@ -67,7 +67,7 @@ export const TabNavigator = () => {
                 fill={focused ? Colors.text : Colors.secondary}
               />
             ),
-          tabBarLabel: role === 'user' ? 'Home' : 'My Events',
+          tabBarLabel: role !== 'user' ? 'Home' : 'My Events',
         }}
       />
       <Tab.Screen

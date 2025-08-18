@@ -171,3 +171,9 @@ export const manage_events_list = [
   'Under Review',
   'Rejected',
 ];
+
+export const manage_home_list = [
+  'For You',
+  'Going',
+  'Saved',
+];

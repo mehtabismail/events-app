@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { useTheme } from '@/hooks';
-import { CustomHeader, ScreenWrapper } from '@/components';
+import { CustomHeader, CustomTopTabList, ScreenWrapper } from '@/components';
 import { mS } from '@/utils/functions';
 import { FlashList } from '@shopify/flash-list';
 import { manage_events_list } from '@/constants/dummyData';
@@ -36,55 +36,7 @@ const CreateEventContainer = () => {
       <View style={{ paddingHorizontal: mS(15) }}>
         <CustomHeader backButton centerText={'Manage Events'} />
       </View>
-      <View
-        style={[
-          {
-            paddingHorizontal: mS(15),
-            borderBottomWidth: 1,
-            borderBottomColor: '#D0E3E9',
-          },
-        ]}
-      >
-        <FlashList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={manage_events_list}
-          estimatedItemSize={10}
-          renderItem={({ item, index }) => {
-            return (
-              <TouchableOpacity
-                onPress={() => setselectedIndex(index)}
-                style={{
-                  paddingRight: mS(32),
-                }}
-              >
-                <Text
-                  style={[
-                    Fonts.PLUSJAKARTASANS_BOLD_14,
-                    {
-                      height: mS(70),
-                      textAlignVertical: 'center',
-                      textAlign: 'center', // optional for horizontal center
-
-                      color:
-                        index === selectedIndex
-                          ? Colors.text
-                          : Colors.secondary,
-                      borderBottomWidth: 4,
-                      borderBottomColor:
-                        index === selectedIndex
-                          ? '#E5E8EB'
-                          : Colors.transparent,
-                    },
-                  ]}
-                >
-                  {item}
-                </Text>
-              </TouchableOpacity>
-            );
-          }}
-        />
-      </View>
+      <CustomTopTabList listData={manage_events_list} />
       <ScreenWrapper>
         <FlashList
           data={[

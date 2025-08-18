@@ -81,9 +81,16 @@ const CustomHeader = ({
         )}
       </View>
 
-      <View
-        style={[Layout.justifyContentEnd, Layout.row, { width: '20%' }]}
-      ></View>
+      <View style={[Layout.justifyContentEnd, Layout.row, { width: '20%' }]}>
+        {RIcon && (
+          <TouchableOpacity
+            onPress={() => onPressRight && onPressRight()}
+            style={[leftInvertedX && Layout.invertedX]}
+          >
+            <RIcon />
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };

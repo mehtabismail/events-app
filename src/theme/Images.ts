@@ -4,6 +4,8 @@ export default function ({}: ThemeVariables) {
   return {
     svg: {
       HomeTab: require('./assets/svg/home_tab.svg'),
+      HomeSearch: require('./assets/svg/home_search.svg'),
+      HeaderSearch: require('./assets/svg/header_search.svg'),
       CreateTab: require('./assets/svg/CreateTab.svg'),
       ActivityTab: require('./assets/svg/ActivityTab.svg'),
       PaymentTab: require('./assets/svg/PaymentTab.svg'),
