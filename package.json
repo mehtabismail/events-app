@@ -7,10 +7,8 @@
     "androidBuildABB": "npx react-native build-android --mode=release",
     "android": "npx react-native run-android",
     "ios": "npx react-native run-ios --simulator=`iPhone 16 Pro`",
-    "ios15": "yarn ios --simulator='iPhone 15'",
-    "ios16ProMax": "yarn ios --simulator='iPhone 16 Pro Max'",
+    "ios15": "npx react-native run-ios --simulator='iPhone 15'",
 
-    "ios-latest": "./run-ios-latest.sh",
     "lint": "eslint .",
     "start": "npx react-native start --reset-cache",
     "test": "jest"
