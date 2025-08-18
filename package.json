@@ -3,8 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "androidBuildAPK": "cd android && ./gradlew assembleRelease && cd ..",
+    "androidBuildABB": "npx react-native build-android --mode=release",
     "android": "npx react-native run-android",
     "ios": "npx react-native run-ios --simulator=`iPhone 16 Pro`",
+    "ios15": "yarn ios --simulator='iPhone 15'",
+    "ios16ProMax": "yarn ios --simulator='iPhone 16 Pro Max'",
+
+    "ios-latest": "./run-ios-latest.sh",
     "lint": "eslint .",
     "start": "npx react-native start --reset-cache",
     "test": "jest"
