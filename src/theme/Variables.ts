@@ -5,6 +5,7 @@
  * That allows to change them more easily later on.
  */
 
+import { mS } from '@/utils/functions';
 import { ThemeNavigationColors } from './theme';
 
 /**
@@ -40,25 +41,25 @@ export const NavigationColors: Partial<ThemeNavigationColors> = {
  * FontSize
  */
 export const FontSize = {
-  tiny: 14,
-  small: 16,
-  regular: 20,
-  large: 40,
+  tiny: mS(14),
+  small: mS(16),
+  regular: mS(20),
+  large: mS(40),
 };
 
 /**
  * Metrics Sizes
  */
-const little = 5;
-const tiny = 10;
-const gap = 12;
-const xTiny = 15;
+const little = mS(5);
+const tiny = mS(10);
+const gap = mS(12);
+const xTiny = mS(15);
 const small = tiny * 2; // 20
-const medium = 25;
+const medium = mS(25);
 const regular = tiny * 3; // 30
-const sRegular = 35;
-const xRegular = 40;
-const xxRegular = 50;
+const sRegular = mS(35);
+const xRegular = mS(40);
+const xxRegular = mS(50);
 const large = regular * 2; // 60
 const xLarge = xRegular * 2; // 60
 export const MetricsSizes = {
