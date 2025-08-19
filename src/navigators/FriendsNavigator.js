@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTheme } from '@/hooks';
-import { ActivityContainer } from '../screens';
+import { ActivityContainer, FriendsContainer } from '../screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -10,8 +10,8 @@ function FriendsNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
-        name="ActivityContainer"
-        component={ActivityContainer}
+        name="FriendsContainer"
+        component={FriendsContainer}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

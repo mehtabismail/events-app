@@ -16,6 +16,7 @@ import { FlashList } from '@shopify/flash-list';
 import { manage_home_list } from '@/constants/dummyData';
 import FastImage from 'react-native-fast-image';
 import dayjs from 'dayjs';
+import { navigationRef } from '@/navigators/utils';
 
 const HomeContainer = () => {
   const { Layout, Gutters, Fonts, Colors, Images } = useTheme();
@@ -29,7 +30,10 @@ const HomeContainer = () => {
 
   const RenderItem = ({ item }) => {
     return (
-      <TouchableOpacity style={[Gutters.tinyVPadding]}>
+      <TouchableOpacity
+        onPress={() => navigationRef.navigate('EventDetailContainer', item)}
+        style={[Gutters.tinyVPadding]}
+      >
         <FastImage
           style={[
             Gutters.littleVMargin,

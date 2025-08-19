@@ -1,6 +1,7 @@
 import { View, Text, TextInput } from 'react-native';
 import React from 'react';
 import { useTheme } from '@/hooks';
+import { mS } from '@/utils/functions';
 
 const CustomTextInput = props => {
   const { Layout, Gutters, Colors, Fonts, Images } = useTheme();
@@ -31,7 +32,7 @@ const CustomTextInput = props => {
               },
             ]}
           >
-            <LIcon width={25} height={25} />
+            <LIcon width={mS(25)} height={mS(25)} />
           </View>
         )}
         <TextInput
@@ -45,6 +46,7 @@ const CustomTextInput = props => {
             props?.handleChangeInput(value, props?.fieldName);
           }}
           style={[
+            Layout.fill,
             Gutters.tinyHPadding,
             Fonts.PLUSJAKARTASANS_REGULAR_16,
             // Gutters.extraLightShadow,
@@ -55,12 +57,12 @@ const CustomTextInput = props => {
           <View
             style={[
               {
-                right: 40,
+                paddingRight: mS(10),
                 justifyContent: 'center',
               },
             ]}
           >
-            <RIcon width={25} height={35} />
+            <RIcon width={mS(25)} height={mS(25)} />
           </View>
         )}
       </View>

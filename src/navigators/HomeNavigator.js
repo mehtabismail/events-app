@@ -1,4 +1,8 @@
-import { HomeContainer, NotificationContainer } from '@/screens';
+import {
+  EventDetailContainer,
+  HomeContainer,
+  NotificationContainer,
+} from '@/screens';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
@@ -9,6 +13,11 @@ function HomeNavigator({ navigation, route }) {
       <Stack.Screen
         name="HomeContainer"
         component={HomeContainer}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="EventDetailContainer"
+        component={EventDetailContainer}
         options={{ headerShown: false }}
       />
       <Stack.Screen
