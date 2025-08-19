@@ -1,21 +1,21 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTheme } from '@/hooks';
-import { ActivityContainer } from '../screens';
+import { ActivityContainer, MyEventsContainer } from '../screens';
 
 const Stack = createNativeStackNavigator();
 
-function ActivityNavigator() {
+function MyEventsNavigator() {
   const { navigationTheme } = useTheme();
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
-        name="ActivityContainer"
-        component={ActivityContainer}
+        name="MyEventsContainer"
+        component={MyEventsContainer}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
 }
 
-export default ActivityNavigator;
+export default MyEventsNavigator;

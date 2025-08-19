@@ -6,4 +6,6 @@ export { default as ChatNavigator } from './ChatNavigator';
 export { default as PaymentNavigator } from './PaymentNavigator';
 export { default as CreateNavigator } from './CreateNavigator';
 export { default as ActivityNavigator } from './ActivityNavigator';
+export { default as FriendsNavigator } from './FriendsNavigator';
+export { default as MyEventsNavigator } from './MyEventsNavigator';
 export { default as NotificationsNavigator } from './NotificationsNavigator';

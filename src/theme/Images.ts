@@ -19,6 +19,7 @@ export default function ({}: ThemeVariables) {
       Chat: require('./assets/svg/chat.svg'),
       Plus: require('./assets/svg/Plus.svg'),
       Notification: require('./assets/svg/notification.svg'),
+      UserFriends: require('./assets/svg/Friends.svg'),
       NotificationTab: require('./assets/svg/Notifications.svg'),
       ArrowRight: require('./assets/svg/arrow_right.svg'),
       BackButton: require('./assets/svg/back_button.svg'),

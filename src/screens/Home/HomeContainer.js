@@ -36,9 +36,9 @@ const HomeContainer = () => {
             { width: '100%', height: mS(200), borderRadius: mS(8) },
           ]}
           source={item?.img}
-          resizeMode={FastImage.resizeMode.contain}
+          resizeMode={FastImage.resizeMode.cover}
         />
-        <View style={[Gutters.xTinyLPadding, Layout.justifyContentCenter]}>
+        <View style={[Layout.justifyContentCenter]}>
           <Text
             numberOfLines={1}
             style={[Gutters.littleVMargin, Fonts.PLUSJAKARTASANS_BOLD_18]}

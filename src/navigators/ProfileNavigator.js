@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTheme } from '@/hooks';
-import { ProfileContainer } from '@/screens';
+import { ProfileContainer, SettingsContainer } from '@/screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -9,6 +9,11 @@ function ProfileNavigator() {
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name="SettingsContainer"
+        component={SettingsContainer}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="ProfileContainer"
         component={ProfileContainer}

@@ -102,7 +102,7 @@
 // export default LoginContainer;
 
 import { View, Text, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { CustomButton, CustomTextInput, ScreenWrapper } from '@/components';
 import { useTheme } from '@/hooks';
 import { mS } from '@/utils/functions';
@@ -114,24 +114,28 @@ import { navigationRef } from '@/navigators/utils';
 const LoginContainer = () => {
   const { Layout, Gutters, Fonts, Images, Colors } = useTheme();
   const [role, setRole] = useState('');
-  const [username, setUsername] = useState('user');
+  const [username, setUsername] = useState('');
+  const formData = useRef({ username: '', password: '' });
 
+  console.log(formData.current);
   const dispatch = useDispatch();
 
-  const handleChangeInput = props => {
-    setUsername(props);
+  const handleChangeInput = (value, fieldName) => {
+    console.log(value, fieldName);
+    if (fieldName == 'username') formData.current.username = value;
   };
 
   const loginPressHandler = () => {
-    // if (username == 'user') {
-    //   dispatch(storeToken('123'));
-    //   dispatch(setingRole('user'));
-    // } else {
-    //   dispatch(storeToken('123'));
-    //   dispatch(setingRole('event-planner'));
-    // }
-    dispatch(storeToken('123'));
-    dispatch(setingRole('event-planner'));
+    console.log(formData.current.username);
+    if (formData.current.username.toLowerCase() == 'user') {
+      dispatch(storeToken('123'));
+      dispatch(setingRole('user'));
+    } else {
+      dispatch(storeToken('123'));
+      dispatch(setingRole('event-planner'));
+    }
+    // dispatch(storeToken('123'));
+    // dispatch(setingRole('event-planner'));
   };
 
   const LoginContent = () => {
@@ -150,9 +154,16 @@ const LoginContainer = () => {
         <View>
           <CustomTextInput
             placeholder="Username or Email"
-            // value={username}
+            // value={formData.current.username}
+            defaultValue={formData.current.username}
+            fieldName="username"
             // headingText="Email"
-            handleChangeInput={handleChangeInput}
+            handleChangeInput={(value, fieldname) => {
+              console.log('called this function');
+              formData.current[fieldname] = value;
+            }}
+            keyboardType="email-address"
+            type="text"
           />
           <CustomTextInput
             secureTextEntry

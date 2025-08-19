@@ -4,7 +4,7 @@ import { ActivityContainer } from '../screens';
 
 const Stack = createNativeStackNavigator();
 
-function ActivityNavigator() {
+function FriendsNavigator() {
   const { navigationTheme } = useTheme();
 
   return (
@@ -18,4 +18,4 @@ function ActivityNavigator() {
   );
 }
 
-export default ActivityNavigator;
+export default FriendsNavigator;

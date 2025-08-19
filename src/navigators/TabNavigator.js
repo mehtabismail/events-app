@@ -4,7 +4,9 @@ import { useTheme } from '@/hooks';
 import {
   ActivityNavigator,
   CreateNavigator,
+  FriendsNavigator,
   HomeNavigator,
+  MyEventsNavigator,
   NotificationsNavigator,
   PaymentNavigator,
   ProfileNavigator,
@@ -51,10 +53,10 @@ export const TabNavigator = () => {
     >
       <Tab.Screen
         name={role === 'user' ? 'Home' : 'My Events'}
-        component={HomeNavigator}
+        component={role === 'user' ? HomeNavigator : MyEventsNavigator}
         options={{
           tabBarIcon: ({ focused }) =>
-            role !== 'user' ? (
+            role === 'user' ? (
               <Images.svg.HomeTab.default
                 width={mS(24)}
                 height={mS(32)}
@@ -67,11 +69,11 @@ export const TabNavigator = () => {
                 fill={focused ? Colors.text : Colors.secondary}
               />
             ),
-          tabBarLabel: role !== 'user' ? 'Home' : 'My Events',
+          tabBarLabel: role === 'user' ? 'Home' : 'My Events',
         }}
       />
       <Tab.Screen
-        name={role === 'user' ? 'Activity' : 'Create'}
+        name={role === 'user' ? 'Activity' : 'Dashboard'}
         component={role === 'user' ? ActivityNavigator : CreateNavigator}
         options={{
           tabBarIcon: ({ focused }) =>
@@ -88,18 +90,18 @@ export const TabNavigator = () => {
                 fill={focused ? Colors.text : Colors.secondary}
               />
             ),
-          tabBarLabel: role === 'user' ? 'Activity' : 'Create',
+          tabBarLabel: role === 'user' ? 'Activity' : 'Dashboard',
         }}
       />
       <Tab.Screen
-        name={role === 'user' ? 'Events' : 'Payments'}
-        component={role === 'user' ? ActivityNavigator : PaymentNavigator}
+        name={role === 'user' ? 'Friends' : 'Payments'}
+        component={role === 'user' ? FriendsNavigator : PaymentNavigator}
         options={{
           tabBarIcon: ({ focused }) =>
             role === 'user' ? (
-              <Images.svg.CalenderTab.default
-                width={mS(24)}
-                height={mS(32)}
+              <Images.svg.UserFriends.default
+                // width={mS(24)}
+                // height={mS(32)}
                 fill={focused ? Colors.text : Colors.secondary}
               />
             ) : (
@@ -109,7 +111,7 @@ export const TabNavigator = () => {
                 fill={focused ? Colors.text : Colors.secondary}
               />
             ),
-          tabBarLabel: role === 'user' ? 'Events' : 'Payments',
+          tabBarLabel: role === 'user' ? 'Friends' : 'Payments',
         }}
       />
       <Tab.Screen
