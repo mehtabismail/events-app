@@ -31,6 +31,14 @@ export default function ({}: ThemeVariables) {
       Logo_With_Text: require('./assets/svg/Logo_With_Text.svg'),
       UpDown: require('./assets/svg/UpDown.svg'),
       ImagePlaceholder: require('./assets/svg/ImagePlaceholder.svg'),
+
+      // Settings icons
+      SettingAccountInfo: require('./assets/svg/setting_account_info.svg'),
+      SettingNotifications: require('./assets/svg/setting_notifications.svg'),
+      SettingPrivacySetting: require('./assets/svg/setting_privacy_setting.svg'),
+      SettingAppPreferences: require('./assets/svg/setting_app_preferences.svg'),
+      SettingHelpSupport: require('./assets/svg/setting_help_support.svg'),
+      SettingAbout: require('./assets/svg/setting_about.svg'),
     },
     png: {
       Logo: require('./assets/images/Logo.png'),
