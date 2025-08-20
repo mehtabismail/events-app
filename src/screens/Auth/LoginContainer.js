@@ -101,9 +101,14 @@
 
 // export default LoginContainer;
 
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import React, { useRef, useState } from 'react';
-import { CustomButton, CustomTextInput, ScreenWrapper } from '@/components';
+import {
+  CustomButton,
+  CustomHeader,
+  CustomTextInput,
+  ScreenWrapper,
+} from '@/components';
 import { useTheme } from '@/hooks';
 import { mS } from '@/utils/functions';
 import FastImage from 'react-native-fast-image';
@@ -127,9 +132,11 @@ const LoginContainer = () => {
     if (formData.current.username.toLowerCase() == 'user') {
       dispatch(storeToken('123'));
       dispatch(setingRole('user'));
-    } else {
+    } else if (formData.current.username.toLowerCase() == 'eventplanner') {
       dispatch(storeToken('123'));
       dispatch(setingRole('event-planner'));
+    } else {
+      Alert.alert(`Please enter text 'user' or 'eventplanner' to login.`);
     }
     // dispatch(storeToken('123'));
     // dispatch(setingRole('event-planner'));
@@ -137,7 +144,7 @@ const LoginContainer = () => {
 
   const LoginContent = () => {
     return (
-      <>
+      <ScreenWrapper>
         <View style={[Layout.center, Gutters.smallVMargin]}>
           <FastImage
             style={{ width: mS(150), height: mS(150) }}
@@ -205,7 +212,13 @@ const LoginContainer = () => {
             >
               Dont have an account?
             </Text>
-            <TouchableOpacity activeOpacity={0.8} onPress={() => setRole(null)}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                navigationRef.navigate('SignupContainer');
+                // setRole(null);
+              }}
+            >
               <Text
                 style={[
                   Fonts.PLUSJAKARTASANS_REGULAR_14,
@@ -218,22 +231,25 @@ const LoginContainer = () => {
             </TouchableOpacity>
           </View>
         </View>
-      </>
+      </ScreenWrapper>
     );
   };
 
   const SwitchingContent = () => {
     return (
-      <>
-        <View style={[Layout.center, Layout.fill]}>
+      <View style={[Layout.fill, { paddingHorizontal: mS(15) }]}>
+        <CustomHeader backButton onBackPress={() => setRole('')} />
+        <View
+          style={[Layout.fill, Layout.center, { backgroundColor: 'yellow' }]}
+        >
           <Text
             style={[
               Fonts.PLUSJAKARTASANS_BOLD_22,
               Gutters.largeVMargin,
-              { position: 'absolute', top: 10 },
+              { position: 'absolute', top: 0 },
             ]}
           >
-            Choose Your Role :
+            Choose Your Role
           </Text>
           <CustomButton
             btnText={'User'}
@@ -256,19 +272,21 @@ const LoginContainer = () => {
             }}
           />
         </View>
-      </>
+      </View>
     );
   };
   return (
-    <ScreenWrapper>
+    <View style={[Layout.fill, { backgroungColor: Colors.background }]}>
       {role === null ? (
-        <SwitchingContent />
+        <>
+          <SwitchingContent />
+        </>
       ) : (
         <>
           <LoginContent />
         </>
       )}
-    </ScreenWrapper>
+    </View>
   );
 };
 

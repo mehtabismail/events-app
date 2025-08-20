@@ -25,7 +25,7 @@ const UserSignUp = ({ navigation }) => {
   };
   return (
     <ScreenWrapper>
-      <CustomHeader backButton centerText={'Sign Up'} />
+      {/* <CustomHeader backButton centerText={'Sign Up'} /> */}
       <CustomTextInput
         placeholder="First Name"
         handleChangeInput={handleChangeInput}

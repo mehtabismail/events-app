@@ -2,7 +2,12 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useTheme } from '@/hooks';
-import { CustomHeader, ScreenWrapper } from '@/components';
+import {
+  CustomHeader,
+  CustomIconBox,
+  CustomRow,
+  ScreenWrapper,
+} from '@/components';
 import { mS } from '@/utils/functions';
 import { logout } from '@/store/auth/AuthSlice';
 import { persistor } from '@/store/store';
@@ -12,42 +17,15 @@ const SettingsContainer = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const SectionTitle = ({ title }) => (
-    <Text style={[Fonts.PLUSJAKARTASANS_BOLD_18, Gutters.smallTMargin, Gutters.tinyBMargin]}>
-      {title}
-    </Text>
-  );
-
-  const IconBox = ({ children }) => (
-    <View
+    <Text
       style={[
-        Layout.center,
-        {
-          width: mS(52),
-          height: mS(52),
-          borderRadius: mS(12),
-          backgroundColor: Colors.secondary_background,
-        },
+        Fonts.PLUSJAKARTASANS_BOLD_18,
+        Gutters.smallTMargin,
+        Gutters.tinyBMargin,
       ]}
     >
-      {children}
-    </View>
-  );
-
-  const Row = ({ icon, title, subtitle, onPress }) => (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      onPress={onPress}
-      style={[Layout.row, Layout.alignItemsCenter, Gutters.xTinyVPadding]}
-    >
-      <IconBox>{icon}</IconBox>
-      <View style={[Layout.fill, Gutters.xTinyLMargin]}>
-        <Text style={[Fonts.PLUSJAKARTASANS_MEDIUM_16]}>{title}</Text>
-        {subtitle ? (
-          <Text style={[Fonts.PLUSJAKARTASANS_REGULAR_14]}>{subtitle}</Text>
-        ) : null}
-      </View>
-      <Images.svg.ArrowRight.default />
-    </TouchableOpacity>
+      {title}
+    </Text>
   );
 
   return (
@@ -57,7 +35,7 @@ const SettingsContainer = ({ navigation }) => {
       </View>
       <ScreenWrapper>
         <SectionTitle title="Account" />
-        <Row
+        <CustomRow
           title="Account Information"
           subtitle="Manage your profile information"
           icon={<Images.svg.SettingAccountInfo.default />}
@@ -65,13 +43,13 @@ const SettingsContainer = ({ navigation }) => {
         />
 
         <SectionTitle title="Preferences" />
-        <Row
+        <CustomRow
           title="Notifications"
           subtitle="Customize your notification settings"
           icon={<Images.svg.SettingNotifications.default />}
           onPress={() => {}}
         />
-        <Row
+        <CustomRow
           title="Privacy Settings"
           subtitle="Control your profile visibility and interactions"
           icon={<Images.svg.SettingPrivacySetting.default />}
@@ -85,7 +63,7 @@ const SettingsContainer = ({ navigation }) => {
         />
 
         <SectionTitle title="Support" />
-        <Row
+        <CustomRow
           title="Help & Support"
           icon={<Images.svg.SettingHelpSupport.default />}
           onPress={() => {}}
@@ -94,7 +72,7 @@ const SettingsContainer = ({ navigation }) => {
 
         {/* Logout Section */}
         <SectionTitle title="Account Actions" />
-        <Row
+        <CustomRow
           title="Log Out"
           subtitle="Sign out of your account"
           icon={<Images.svg.LogoutBlack.default />}

@@ -26,7 +26,9 @@ const CustomTopTabList = ({ listData, activeTab, setActiveTab }) => {
         renderItem={({ item, index }) => {
           return (
             <TouchableOpacity
-              onPress={() => setActiveTab(index)}
+              onPress={() => {
+                setActiveTab(index);
+              }}
               style={{
                 paddingRight: mS(32),
               }}
@@ -39,8 +41,7 @@ const CustomTopTabList = ({ listData, activeTab, setActiveTab }) => {
                     textAlignVertical: 'center',
                     textAlign: 'center', // optional for horizontal center
 
-                    color:
-                      index === activeTab ? Colors.text : Colors.secondary,
+                    color: index === activeTab ? Colors.text : Colors.secondary,
                     borderBottomWidth: 4,
                     borderBottomColor:
                       index === activeTab ? '#E5E8EB' : Colors.transparent,

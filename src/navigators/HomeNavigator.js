@@ -1,4 +1,5 @@
 import {
+  CommentsContainer,
   EventDetailContainer,
   HomeContainer,
   NotificationContainer,
@@ -19,6 +20,13 @@ function HomeNavigator({ navigation, route }) {
         name="EventDetailContainer"
         component={EventDetailContainer}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CommentsContainer"
+        component={CommentsContainer}
+        options={{
+          headerShown: false,
+        }}
       />
       <Stack.Screen
         name="NotificationContainer"

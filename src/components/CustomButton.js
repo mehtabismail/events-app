@@ -3,8 +3,10 @@ import React from 'react';
 import { useTheme } from '@/hooks';
 import { mS } from '@/utils/functions';
 
-const CustomButton = ({ onPress, btnText, customStyle }) => {
+const CustomButton = ({ onPress, btnText, customStyle, customTextStyle }) => {
   const { Layout, Colors, Gutters, Fonts } = useTheme();
+
+  console.log(customTextStyle);
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -19,13 +21,14 @@ const CustomButton = ({ onPress, btnText, customStyle }) => {
           borderRadius: mS(24),
           backgroundColor: Colors.primary,
         },
+        customStyle,
       ]}
     >
       <Text
         style={[
           Fonts.PLUSJAKARTASANS_BOLD_16,
           { color: Colors.white },
-          customStyle,
+          customTextStyle,
         ]}
       >
         {btnText}
