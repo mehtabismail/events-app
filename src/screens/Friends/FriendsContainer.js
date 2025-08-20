@@ -9,7 +9,6 @@ import {
 } from '@/components';
 import { useTheme } from '@/hooks';
 import { mS } from '@/utils/functions';
-import { FlashList } from '@shopify/flash-list';
 import {
   manage_friends_list,
   dummyFriendRequestsData,
@@ -27,7 +26,13 @@ const FriendsContainer = () => {
 
   const FriendsSection = ({ title, data, activeTab }) => (
     <View style={[Layout.fill]}>
-      <Text style={[Fonts.PLUSJAKARTASANS_BOLD_18, Gutters.tinyVMargin, Gutters.smallTMargin,]}>
+      <Text
+        style={[
+          Fonts.PLUSJAKARTASANS_BOLD_18,
+          Gutters.tinyVMargin,
+          Gutters.smallTMargin,
+        ]}
+      >
         {activeTab == 2
           ? 'Suggested Friends'
           : activeTab == 1
@@ -89,18 +94,6 @@ const FriendsContainer = () => {
     );
   };
 
-  const RowButtons = (activeTab, type) => {
-    switch (activeTab) {
-      case 0:
-        return <MyFriendsButton />;
-      case 1:
-        return <FriendRequestsButton type={type} />;
-      case 2:
-        return <AddFriendsButton />;
-      default:
-        return <MyFriendsButton />;
-    }
-  };
   const MyFriendsButton = () => (
     <TouchableOpacity style={[Layout.center, Gutters.xTinyTMargin]}>
       <Images.svg.MyFriends.default />
@@ -203,16 +196,16 @@ const FriendsContainer = () => {
     </TouchableOpacity>
   );
 
-  const renderContent = () => {
+  const RowButtons = (activeTab, type) => {
     switch (activeTab) {
       case 0:
-        return <FriendsSection activeTab={activeTab} />;
+        return <MyFriendsButton />;
       case 1:
-        return <FriendRequestsSection />;
+        return <FriendRequestsButton type={type} />;
       case 2:
-        return <AddFriendsSection />;
+        return <AddFriendsButton />;
       default:
-        return <FriendsSection />;
+        return <MyFriendsButton />;
     }
   };
 
