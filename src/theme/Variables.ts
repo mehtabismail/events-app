@@ -51,6 +51,7 @@ export const FontSize = {
  * Metrics Sizes
  */
 const little = mS(5);
+const xLittle = mS(8);
 const tiny = mS(10);
 const gap = mS(12);
 const xTiny = mS(15);
@@ -64,6 +65,7 @@ const large = regular * 2; // 60
 const xLarge = xRegular * 2; // 60
 export const MetricsSizes = {
   little,
+  xLittle,
   tiny,
   gap,
   xTiny,

@@ -4,7 +4,7 @@ import { FlashList } from '@shopify/flash-list';
 import { mS } from '@/utils/functions';
 import { useTheme } from '@/hooks';
 
-const CustomTopTabList = ({ listData }) => {
+const CustomTopTabList = ({ listData, setSelected }) => {
   const { Layout, Gutters, Fonts, Colors, Images } = useTheme();
   const [selectedIndex, setselectedIndex] = useState(0);
 
@@ -27,7 +27,14 @@ const CustomTopTabList = ({ listData }) => {
         renderItem={({ item, index }) => {
           return (
             <TouchableOpacity
-              onPress={() => setselectedIndex(index)}
+              onPress={() => {
+                setselectedIndex(index);
+                if (index == 0) {
+                  setSelected('user');
+                } else {
+                  setSelected('eventplanner');
+                }
+              }}
               style={{
                 paddingRight: mS(32),
               }}

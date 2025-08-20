@@ -10,6 +10,7 @@ export default function ({}: ThemeVariables) {
       ActivityTab: require('./assets/svg/ActivityTab.svg'),
       PaymentTab: require('./assets/svg/PaymentTab.svg'),
       CalenderTab: require('./assets/svg/Calender_Tab.svg'),
+      Calender: require('./assets/svg/Calender.svg'),
       BookingTab: require('./assets/svg/booking_tab.svg'),
       ProfileTab: require('./assets/svg/ProfileTab.svg'),
       Profile: require('./assets/svg/profile.svg'),
@@ -18,6 +19,7 @@ export default function ({}: ThemeVariables) {
       Logout: require('./assets/svg/logout.svg'),
       Chat: require('./assets/svg/chat.svg'),
       Plus: require('./assets/svg/Plus.svg'),
+      ThumbsUp: require('./assets/svg/ThumbsUp.svg'),
       Notification: require('./assets/svg/notification.svg'),
       UserFriends: require('./assets/svg/Friends.svg'),
       NotificationTab: require('./assets/svg/Notifications.svg'),
@@ -39,9 +41,17 @@ export default function ({}: ThemeVariables) {
       SettingAppPreferences: require('./assets/svg/setting_app_preferences.svg'),
       SettingHelpSupport: require('./assets/svg/setting_help_support.svg'),
       SettingAbout: require('./assets/svg/setting_about.svg'),
+      Users: require('./assets/svg/Users.svg'),
+      Like: require('./assets/svg/Like.svg'),
+      Comment: require('./assets/svg/Comment.svg'),
+      Location: require('./assets/svg/Location.svg'),
+      Ticket: require('./assets/svg/Ticket.svg'),
+      Eye: require('./assets/svg/Eye.svg'),
     },
     png: {
       Logo: require('./assets/images/Logo.png'),
+      Map: require('./assets/images/map.png'),
+      EventDetail: require('./assets/images/event_detail.png'),
     },
   };
 }

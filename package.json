@@ -8,7 +8,6 @@
     "android": "npx react-native run-android",
     "ios": "npx react-native run-ios --simulator=`iPhone 16 Pro`",
     "ios15": "npx react-native run-ios --simulator='iPhone 15'",
-
     "lint": "eslint .",
     "start": "npx react-native start --reset-cache",
     "test": "jest"
