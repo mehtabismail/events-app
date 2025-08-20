@@ -114,14 +114,11 @@ import { navigationRef } from '@/navigators/utils';
 const LoginContainer = () => {
   const { Layout, Gutters, Fonts, Images, Colors } = useTheme();
   const [role, setRole] = useState('');
-  const [username, setUsername] = useState('');
   const formData = useRef({ username: '', password: '' });
 
-  console.log(formData.current);
   const dispatch = useDispatch();
 
   const handleChangeInput = (value, fieldName) => {
-    console.log(value, fieldName);
     if (fieldName == 'username') formData.current.username = value;
   };
 

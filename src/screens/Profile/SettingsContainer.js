@@ -4,8 +4,10 @@ import { useDispatch } from 'react-redux';
 import { useTheme } from '@/hooks';
 import { CustomHeader, ScreenWrapper } from '@/components';
 import { mS } from '@/utils/functions';
+import { logout } from '@/store/auth/AuthSlice';
+import { persistor } from '@/store/store';
 
-const SettingsContainer = () => {
+const SettingsContainer = ({ navigation }) => {
   const { Layout, Gutters, Fonts, Colors, Images } = useTheme();
   const dispatch = useDispatch();
 
@@ -59,7 +61,7 @@ const SettingsContainer = () => {
           title="Account Information"
           subtitle="Manage your profile information"
           icon={<Images.svg.SettingAccountInfo.default />}
-          onPress={() => {}}
+          onPress={() => navigation.navigate('EditProfileContainer')}
         />
 
         <SectionTitle title="Preferences" />
@@ -75,7 +77,7 @@ const SettingsContainer = () => {
           icon={<Images.svg.SettingPrivacySetting.default />}
           onPress={() => {}}
         />
-        <Row
+        {/* <Row
           title="App Preferences"
           subtitle="Choose your preferred language and app theme"
           icon={<Images.svg.SettingAppPreferences.default />}
@@ -88,7 +90,20 @@ const SettingsContainer = () => {
           icon={<Images.svg.SettingHelpSupport.default />}
           onPress={() => {}}
         />
-        <Row title="About" icon={<Images.svg.SettingAbout.default />} onPress={() => {}} />
+        <Row title="About" icon={<Images.svg.SettingAbout.default />} onPress={() => {}} /> */}
+
+        {/* Logout Section */}
+        <SectionTitle title="Account Actions" />
+        <Row
+          title="Log Out"
+          subtitle="Sign out of your account"
+          icon={<Images.svg.LogoutBlack.default />}
+          onPress={async () => {
+            dispatch(logout());
+            await persistor.purge();
+            await persistor.flush();
+          }}
+        />
       </ScreenWrapper>
     </View>
   );

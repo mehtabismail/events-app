@@ -10,7 +10,7 @@ import dayjs from 'dayjs';
 
 const CreateEventContainer = () => {
   const { Layout, Gutters, Fonts, Colors, Images } = useTheme();
-  const [selectedIndex, setselectedIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);
 
   const RenderItem = ({ item }) => {
     return (
@@ -36,7 +36,11 @@ const CreateEventContainer = () => {
       <View style={{ paddingHorizontal: mS(15) }}>
         <CustomHeader backButton centerText={'Manage Events'} />
       </View>
-      <CustomTopTabList listData={manage_events_list} />
+      <CustomTopTabList
+        listData={manage_events_list}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
       <ScreenWrapper>
         <FlashList
           data={[

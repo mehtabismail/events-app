@@ -8,7 +8,7 @@ const CustomTextInput = props => {
   const RIcon = props?.rightIcon ? Images.svg[props?.rightIcon].default : null;
   const LIcon = props?.leftIcon ? Images.svg[props?.leftIcon].default : null;
   return (
-    <View style={[Gutters.gapVPadding]}>
+    <View style={[Gutters.gapVPadding, props?.wrapperStyle]}>
       {props?.headingText && (
         <View style={[Gutters.tinyBMargin]}>
           <Text

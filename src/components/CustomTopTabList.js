@@ -4,9 +4,8 @@ import { FlashList } from '@shopify/flash-list';
 import { mS } from '@/utils/functions';
 import { useTheme } from '@/hooks';
 
-const CustomTopTabList = ({ listData }) => {
+const CustomTopTabList = ({ listData, activeTab, setActiveTab }) => {
   const { Layout, Gutters, Fonts, Colors, Images } = useTheme();
-  const [selectedIndex, setselectedIndex] = useState(0);
 
   return (
     <View
@@ -27,7 +26,7 @@ const CustomTopTabList = ({ listData }) => {
         renderItem={({ item, index }) => {
           return (
             <TouchableOpacity
-              onPress={() => setselectedIndex(index)}
+              onPress={() => setActiveTab(index)}
               style={{
                 paddingRight: mS(32),
               }}
@@ -41,10 +40,10 @@ const CustomTopTabList = ({ listData }) => {
                     textAlign: 'center', // optional for horizontal center
 
                     color:
-                      index === selectedIndex ? Colors.text : Colors.secondary,
+                      index === activeTab ? Colors.text : Colors.secondary,
                     borderBottomWidth: 4,
                     borderBottomColor:
-                      index === selectedIndex ? '#E5E8EB' : Colors.transparent,
+                      index === activeTab ? '#E5E8EB' : Colors.transparent,
                   },
                 ]}
               >

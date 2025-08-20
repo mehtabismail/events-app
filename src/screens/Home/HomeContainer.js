@@ -23,6 +23,7 @@ const HomeContainer = () => {
 
   const [searchInput, setSearchInput] = useState('');
   const [searchToggle, setSearchToggle] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
 
   const handleChangeInput = props => {
     setSearchInput(props);
@@ -92,7 +93,11 @@ const HomeContainer = () => {
         </View>
       )}
 
-      <CustomTopTabList listData={manage_home_list} />
+      <CustomTopTabList
+        listData={manage_home_list}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
       <ScreenWrapper>
         <FlashList
           showsVerticalScrollIndicator={false}

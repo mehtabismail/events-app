@@ -11,7 +11,7 @@ export { default as CreateEventContainer } from './Events/CreateEventContainer';
 export { default as MyEventsContainer } from './Events/MyEventsContainer';
 export { default as EventDetailContainer } from './Events/EventDetailContainer';
 export { default as ChatContainer } from './Chat/ChatContainer';
-export { default as ProfileContainer } from './Profile/ProfileContainer';
+export { default as EditProfileContainer } from './Profile/EditProfileContainer';
 export { default as SettingsContainer } from './Profile/SettingsContainer';
 export { default as NotificationContainer } from './Notification/NotificationContainer';
 export { default as FriendsContainer } from './Friends/FriendsContainer';

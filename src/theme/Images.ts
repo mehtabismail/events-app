@@ -16,10 +16,12 @@ export default function ({}: ThemeVariables) {
       ChatTab: require('./assets/svg/chat_tab.svg'),
       Catalogue: require('./assets/svg/catalogue_tab.svg'),
       Logout: require('./assets/svg/logout.svg'),
+      LogoutBlack: require('./assets/svg/logout-black.svg'),
       Chat: require('./assets/svg/chat.svg'),
       Plus: require('./assets/svg/Plus.svg'),
       Notification: require('./assets/svg/notification.svg'),
       UserFriends: require('./assets/svg/Friends.svg'),
+      MyFriends: require('./assets/svg/friends-my-friends.svg'),
       NotificationTab: require('./assets/svg/Notifications.svg'),
       ArrowRight: require('./assets/svg/arrow_right.svg'),
       BackButton: require('./assets/svg/back_button.svg'),
@@ -42,6 +44,7 @@ export default function ({}: ThemeVariables) {
     },
     png: {
       Logo: require('./assets/images/Logo.png'),
+      EditProfileImg: require('./assets/images/edit-profile-img-1.png'),
     },
   };
 }
