@@ -24,76 +24,6 @@ const FriendsContainer = () => {
     setSearchInput(value);
   };
 
-  const FriendsSection = ({ title, data, activeTab }) => (
-    <View style={[Layout.fill]}>
-      <Text
-        style={[
-          Fonts.PLUSJAKARTASANS_BOLD_18,
-          Gutters.tinyVMargin,
-          Gutters.smallTMargin,
-        ]}
-      >
-        {activeTab == 2
-          ? 'Suggested Friends'
-          : activeTab == 1
-          ? 'Incoming Requests'
-          : title}
-      </Text>
-      {[...(data?.incoming ? data.incoming : data)].map((item, index) => (
-        <Row key={'key' + index} activeTab={activeTab} item={item} />
-      ))}
-      {activeTab == 1 && (
-        <>
-          <Text
-            style={[
-              Fonts.PLUSJAKARTASANS_BOLD_18,
-              Gutters.tinyVMargin,
-              Gutters.smallTMargin,
-            ]}
-          >
-            Outgoing Requests
-          </Text>
-
-          {[...(data?.outgoing ? data.outgoing : [])].map((item, index) => (
-            <Row key={'key' + index} activeTab={activeTab} item={item} />
-          ))}
-        </>
-      )}
-    </View>
-  );
-
-  const Row = ({ activeTab, item }) => {
-    console.log('Row', activeTab);
-    return (
-      <View style={[Layout.row, Layout.alignItemsCenter, Gutters.tinyVPadding]}>
-        <FastImage
-          style={{
-            width: mS(50),
-            height: mS(50),
-            borderRadius: mS(25),
-          }}
-          source={item.image}
-          resizeMode={FastImage.resizeMode.cover}
-        />
-        <View style={[Layout.fill, Gutters.xTinyLMargin]}>
-          <Text
-            style={[Fonts.PLUSJAKARTASANS_MEDIUM_16, { color: Colors.black }]}
-          >
-            {item.name}
-          </Text>
-          <Text style={[Fonts.PLUSJAKARTASANS_REGULAR_14, { opacity: 0.8 }]}>
-            {activeTab == 0
-              ? item.userName
-              : item?.status
-              ? item.status
-              : item.mutualFriends}
-          </Text>
-        </View>
-        {RowButtons(activeTab, item?.type)}
-      </View>
-    );
-  };
-
   const MyFriendsButton = () => (
     <TouchableOpacity style={[Layout.center, Gutters.xTinyTMargin]}>
       <Images.svg.MyFriends.default />
@@ -208,6 +138,76 @@ const FriendsContainer = () => {
         return <MyFriendsButton />;
     }
   };
+
+  const Row = ({ activeTab, item }) => {
+    console.log('Row', activeTab);
+    return (
+      <View style={[Layout.row, Layout.alignItemsCenter, Gutters.tinyVPadding]}>
+        <FastImage
+          style={{
+            width: mS(50),
+            height: mS(50),
+            borderRadius: mS(25),
+          }}
+          source={item.image}
+          resizeMode={FastImage.resizeMode.cover}
+        />
+        <View style={[Layout.fill, Gutters.xTinyLMargin]}>
+          <Text
+            style={[Fonts.PLUSJAKARTASANS_MEDIUM_16, { color: Colors.black }]}
+          >
+            {item.name}
+          </Text>
+          <Text style={[Fonts.PLUSJAKARTASANS_REGULAR_14, { opacity: 0.8 }]}>
+            {activeTab == 0
+              ? item.userName
+              : item?.status
+              ? item.status
+              : item.mutualFriends}
+          </Text>
+        </View>
+        {RowButtons(activeTab, item?.type)}
+      </View>
+    );
+  };
+
+  const FriendsSection = ({ title, data, activeTab }) => (
+    <View style={[Layout.fill]}>
+      <Text
+        style={[
+          Fonts.PLUSJAKARTASANS_BOLD_18,
+          Gutters.tinyVMargin,
+          Gutters.smallTMargin,
+        ]}
+      >
+        {activeTab == 2
+          ? 'Suggested Friends'
+          : activeTab == 1
+          ? 'Incoming Requests'
+          : title}
+      </Text>
+      {[...(data?.incoming ? data.incoming : data)].map((item, index) => (
+        <Row key={'key' + index} activeTab={activeTab} item={item} />
+      ))}
+      {activeTab == 1 && (
+        <>
+          <Text
+            style={[
+              Fonts.PLUSJAKARTASANS_BOLD_18,
+              Gutters.tinyVMargin,
+              Gutters.smallTMargin,
+            ]}
+          >
+            Outgoing Requests
+          </Text>
+
+          {[...(data?.outgoing ? data.outgoing : [])].map((item, index) => (
+            <Row key={'key' + index} activeTab={activeTab} item={item} />
+          ))}
+        </>
+      )}
+    </View>
+  );
 
   return (
     <View style={[Layout.fill, { backgroundColor: Colors.background }]}>
