@@ -55,7 +55,7 @@ const SettingsContainer = ({ navigation }) => {
           icon={<Images.svg.SettingPrivacySetting.default />}
           onPress={() => {}}
         />
-        {/* <Row
+        <CustomRow
           title="App Preferences"
           subtitle="Choose your preferred language and app theme"
           icon={<Images.svg.SettingAppPreferences.default />}
@@ -68,7 +68,11 @@ const SettingsContainer = ({ navigation }) => {
           icon={<Images.svg.SettingHelpSupport.default />}
           onPress={() => {}}
         />
-        <Row title="About" icon={<Images.svg.SettingAbout.default />} onPress={() => {}} /> */}
+        <CustomRow
+          title="About"
+          icon={<Images.svg.SettingAbout.default />}
+          onPress={() => {}}
+        />
 
         {/* Logout Section */}
         <SectionTitle title="Account Actions" />

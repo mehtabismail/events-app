@@ -97,16 +97,24 @@ const CommentsContainer = () => {
     );
   };
   return (
-    <View style={[Layout.fill, { paddingHorizontal: mS(15) }]}>
+    <View
+      style={[
+        Layout.fill,
+        { paddingHorizontal: mS(15), backgroundColor: Colors.background },
+      ]}
+    >
       <CustomHeader backButton centerText={'Comments'} />
-      <ScrollView style={[Layout.fill]} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={[Layout.fill, { backgroundColor: Colors.background }]}
+        showsVerticalScrollIndicator={false}
+      >
         <SectionTitle title="Top comments" />
         <FlashList data={top_comments} renderItem={RenderItem} />
         <SectionTitle title="All comments" />
         <FlashList data={all_comments} renderItem={RenderItem} />
         <View style={[Layout.row, { position: 'absolute', bottom: 0 }]}></View>
       </ScrollView>
-      <View style={[Layout.row, { backgroundColor: 'Colors.background' }]}>
+      <View style={[Layout.row, { backgroundColor: Colors.background }]}>
         <View style={[Layout.justifyContentCenter, { width: '15%' }]}>
           <FastImage
             source={require('@/theme/assets/images/comment_image.png')}
@@ -114,7 +122,7 @@ const CommentsContainer = () => {
             resizeMode={FastImage.resizeMode.contain}
           />
         </View>
-        <View style={[Layout.fill]}>
+        <View style={[Layout.fill, { backgroundColor: Colors.background }]}>
           <CustomTextInput
             placeholder="Add Comment"
             // headingText="Password"
